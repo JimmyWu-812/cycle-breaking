@@ -2,7 +2,6 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include "edge.h"
 #include "graph.h"
 
 using namespace std;

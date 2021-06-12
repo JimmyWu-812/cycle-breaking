@@ -15,7 +15,7 @@ all	: bin/cb
 # optimized version
 bin/cb			: main_opt.o
 			$(CC) $(OPTFLAGS) main_opt.o -o bin/cb
-main_opt.o 	   	: src/main.cpp
+main_opt.o 	   	: src/main.cpp src/graph.h src/edge.h src/djset.h
 			$(CC) $(CFLAGS) $< -o $@
 
 # clean all the .o and executable files
