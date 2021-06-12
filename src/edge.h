@@ -4,12 +4,12 @@ using namespace std;
 
 class Edge {
 public:
-    int vi, vf, w;
+    int i, j, w;
 
-    Edge(int vii, int vff, int ww) {
-        vi = vii;
-        vf = vff;
-        w = ww;
+    Edge(int i, int j, int w) {
+        this->i = i;
+        this->j = j;
+        this->w = w;
     }
 
     ~Edge(){}
