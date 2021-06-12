@@ -33,11 +33,11 @@ int main(int argc, char* argv[]){
     countingSort(edgesList, m);
     Graph graph(n, m, edgesList);
 
-    cost = graph.maxSTByKruskal();
+    graph.maxSTByKruskal();
 
     fout.open(argv[2],ios::out);
     if(graphType == 'u'){
-        fout << cost << endl;
+        fout << graph.cost << endl;
         for(int k=0; k<graph.edgesNotInMaxST.size(); k++){
             fout << graph.edgesNotInMaxST[k].i << " "
                 << graph.edgesNotInMaxST[k].j << " "
@@ -45,9 +45,12 @@ int main(int argc, char* argv[]){
         }
     }
     else if(graphType == 'd'){
-        
+        graph.addMoreEdges();
+        fout << graph.cost << endl;
         for(int k=0; k<graph.edgesNotInMaxST.size(); k++){
-            continue;
+            fout << graph.edgesNotInMaxST[k].i << " "
+                << graph.edgesNotInMaxST[k].j << " "
+                << graph.edgesNotInMaxST[k].w << endl;
         }
     }
     fout.close();

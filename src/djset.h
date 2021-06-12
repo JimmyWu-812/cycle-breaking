@@ -1,16 +1,15 @@
 #include <iostream>
-#include "edge.h"
 
 using namespace std;
 
 class DJSet {
 public:
     // p: parent of elements, r: rank of elements
-    int *p, *r;
+    vector<int> p, r;
 
     DJSet(int n){
-        p = new int[n];
-        r = new int[n];
+        p.resize(n);
+        r.resize(n);
     }
 
     void makeSet(int x) {
@@ -26,6 +25,7 @@ public:
     }
 
     void unionSets(int x, int y) {
+        // representatives
         int xRep = findSet(x), yRep = findSet(y);
         if(xRep == yRep){
             return;
@@ -39,10 +39,5 @@ public:
                 r[yRep]++;
             }
         }
-    }
-    
-    ~DJSet() {
-        delete[] p;
-        delete[] r;
     }
 };
