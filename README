@@ -1,0 +1,27 @@
+PA#3 Cycle Breaking
+B07502028 吳宗翰
+2021/6/13
+====================
+SYNOPSIS:
+
+	cb <input_file_name> <output_file_name>
+
+	Given a directed or undireced graph, the program breaks all the cycles
+    by removing some edges in the graph. Also ,the program minimizes the total
+    weights of those removed edges.
+====================
+DIRECTORY:
+
+	bin/	  executable binary
+	doc/	  report
+	src/ 	  source codes (*.cpp and *.h)
+=====================
+HOW TO COMPILE:
+
+	Under directory b07502028_pa3/:
+		make
+=====================
+HOW TO RUN:
+
+	Under directory b07502028_pa3/:
+		./bin/cb <input_file_name> <output_file_name>
