@@ -44,12 +44,18 @@ public:
 
     void addMoreEdges(){
         Edge e;
-        for(int k=0; k<edgesNotInMaxST.size(); k++){
+        for(int k=0; k<edgesNotInMaxST.size();k++){
             e = edgesNotInMaxST[k];
-            if(!DFS(e)){
+            if(e.w > 0){
                 adjMaxST[e.i].push_back(e.j);
-                edgesNotInMaxST.erase(edgesNotInMaxST.begin() + k);
-                cost -= e.w;
+                if(DFS(e)){
+                    adjMaxST[e.i].pop_back();
+                }
+                else{
+                    edgesNotInMaxST.erase(edgesNotInMaxST.begin() + k);
+                    cost -= e.w;
+                    k--;
+                }
             }
         }
     }
@@ -77,10 +83,8 @@ public:
     // bool DFS(){
     //     vector<char> c(n, 'w');// color
     //     for(int k=0; k<n; k++){
-    //         if(c[k] == 'w'){
-    //             if(DFSVisit(c, k)){
-    //                 return true;
-    //             }
+    //         if(c[k] == 'w' && DFSVisit(c, k)){
+    //             return true;
     //         }
     //     }
     //     return false;

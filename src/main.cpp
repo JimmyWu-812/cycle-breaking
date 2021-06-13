@@ -6,7 +6,30 @@
 
 using namespace std;
 
-void countingSort(vector<Edge>&, int);
+// void countingSort(vector<Edge>& edgesList, int m){
+//     vector<Edge> sortedEdgesList;
+//     sortedEdgesList.resize(m);
+//     int i, count[201] = {0};
+//     for(i=0; i<m; i++){
+//         count[edgesList[i].w + 100]++;
+//     }
+//     if(count[101] == m){
+//         // unweigted undirected
+//         return;
+//     }
+//     for(i=0; i<=200; i++){
+//         count[i+1] += count[i];
+//     }
+//     for(i=m-1; i>=0; i--){
+//         sortedEdgesList[count[edgesList[i].w + 100] - 1] = edgesList[i];
+//         count[edgesList[i].w + 100]--;
+//     }
+//     edgesList = sortedEdgesList;
+// }
+
+bool CompareEdge(Edge e, Edge f) {
+    return (e.w < f.w);
+}
 
 int main(int argc, char* argv[]){
 
@@ -29,7 +52,8 @@ int main(int argc, char* argv[]){
     }
     fin.close();
 
-    countingSort(edgesList, m);
+    sort(edgesList.begin(), edgesList.end(), CompareEdge);
+    // countingSort(edgesList, m);
     Graph graph(n, m, edgesList);
 
     graph.maxSTByKruskal();
@@ -55,25 +79,4 @@ int main(int argc, char* argv[]){
     fout.close();
 
     return 0;
-}
-
-void countingSort(vector<Edge>& edgesList, int m){
-    vector<Edge> sortedEdgesList;
-    sortedEdgesList.resize(m);
-    int i, count[201] = {0};
-    for(i=0; i<m; i++){
-        count[edgesList[i].w + 100]++;
-    }
-    if(count[101] == m){
-        // unweigted undirected
-        return;
-    }
-    for(i=0; i<=200; i++){
-        count[i+1] += count[i];
-    }
-    for(i=m-1; i>=0; i--){
-        sortedEdgesList[count[edgesList[i].w] - 1] = edgesList[i];
-        count[edgesList[i].w]--;
-    }
-    edgesList = sortedEdgesList;
 }
